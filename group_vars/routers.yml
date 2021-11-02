@@ -1,0 +1,5 @@
+---
+# This file is varialbles for the 'routers' group in the inv.yml file. All options impact though devices in the group.
+ansible_network_os: ios
+ansible_user: cisco
+ansible_password: cisco
