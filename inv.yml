@@ -1,0 +1,7 @@
+---
+all:
+  children:
+    routers:
+      hosts:
+        IOS-R1:
+        IOS-R2:
