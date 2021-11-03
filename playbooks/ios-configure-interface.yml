@@ -1,0 +1,18 @@
+---
+- name: "PLAY 1: Configure IOS interfaces using interface_config.j2 template"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Apply IOS interface configurations to IOS Routers"
+      ios_config:
+        src: "templates/interface_config.j2"
+        save_when: changed
+      notify: config_changed # a conditional that notifies the handler below if the configuration has changed.
+      register: cli_result
+
+# Handler activates when a configuration is changed see notify above
+  handlers:
+    - name: "HANDLER 1: Display relevant changes"
+      listen: config_changed # If the notify sends then config_changed then run debug.msg below
+      debug:
+        msg: "{{ cli_results.commands }}"
