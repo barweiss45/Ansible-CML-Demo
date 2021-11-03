@@ -1,0 +1,8 @@
+{# This template is for configuring IOS Router Interfaces Only #}
+{# iterrate through the host_var *.yaml file #}
+{% for interface in interfaces %}
+interface {{ interface.port }}
+  description {{ interface.description }}
+  ip address {{ interface.ipv4addr }} {{ interface.ipv4mask}}
+  no shut
+{% endfor %}
