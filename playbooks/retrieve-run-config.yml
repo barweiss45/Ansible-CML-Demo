@@ -6,8 +6,20 @@
     - name: "TASK 1: Access IOSv devices and retrieve running configuration"
       ios_command:
         commands: "show running-config"
+
       register: cli_result
 
     - name: "TASK 2: Print running configuration output"
       debug: 
         msg: "{{ cli_result }}"
+    
+    - name: "TASK 3: Create outputs/ folder"
+      file:
+        path: "outputs"
+        state: directory
+      run_once: true
+    
+    - name: "TASK 4: Write output to file"
+      copy:
+        content: "{{ cli_result.stdout[0] }}"
+        dest: "outputs/{{ inventory_hostname }}.txt"
