@@ -1,5 +1,10 @@
 interfaces:
+  - port: "gi0/0"
+    description: "*MGMT INTERFACE*"
+    ipv4addr: "172.17.82.50"
+    ipv4mask: "255.255.255.0"
+
   - port: "gi0/1"
-    description: "*TO:Gi0/1-IOS-R1*"
+    description: "*TO:Gi0/1 - IOS-R2*"
     ipv4addr: "10.0.0.1"
     ipv4mask: "255.255.255.0"

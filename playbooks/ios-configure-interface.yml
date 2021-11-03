@@ -5,10 +5,10 @@
   tasks:
     - name: "TASK 1: Apply IOS interface configurations to IOS Routers"
       ios_config:
-        src: "templates/interface_config.j2"
+        src: "../templates/interface_config.j2"
         save_when: changed
       notify: config_changed # a conditional that notifies the handler below if the configuration has changed.
-      register: cli_result
+      register: cli_results
 
 # Handler activates when a configuration is changed see notify above
   handlers:
