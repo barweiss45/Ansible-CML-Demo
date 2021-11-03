@@ -4,4 +4,6 @@ all:
     routers:
       hosts:
         IOS-R1:
+          ansible_host: 172.17.82.50
         IOS-R2:
+          ansible_host: 172.17.82.51
