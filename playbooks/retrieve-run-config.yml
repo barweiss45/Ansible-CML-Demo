@@ -9,4 +9,5 @@
       register: cli_result
 
     - name: "TASK 2: Print running configuration output"
-      debug: "{{ cli_result }}"
+      debug: 
+        msg: "{{ cli_result }}"
