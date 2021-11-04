@@ -12,7 +12,9 @@ Playbooks and scripts for my internal CML test bed in the lab.
 For this lab I used an Ubuntu 20.04.3 LTS VM and CML. The Ubuntu VM housed all my services such as Ansible, SCP, TFTP (for ZTP), and DHCP for my lab. CML ran on the same host as my Ubuntu VM and were connected by a layer 3 bridge allowing me to use an out of band network (OOB) to access the network devices that ran in CML. However, in order to run this enviromenment you do not have to use the same design. 
 
 :thumbsup: BONUS: In fact this lab can be replicated on the DevNet Sandbox's Cisco Modeling Labs Enterprise instance. [Click here](https://devnetsandbox.cisco.com/RM/Topology) and then type CML in the search box in the upper lefthand side. See screen cap below to see how to get to the sandbox (NOTE: you will need to have to sign in or sign up if you are not already registered with developer.cisco.com):
+
 ![DevNet Sandbox Screen Cap GIF](/assets/images/devnet_sandbox.gif)
+
 Just be aware there are some extra steps you may need to do. Maybe I'lll add those instructions later.
 
 ## Before you start
