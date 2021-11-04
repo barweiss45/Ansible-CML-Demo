@@ -29,12 +29,14 @@ ntp source GigabitEthernet0/0
 ntp server vrf MGMT ip time.nist.gov
 {# LINE SETINGS #}
 line con 0
+ length 80
  exec-timeout 30 0
  logging synchronous
  history size 50
  transport preferred none
  transport output none
 line vty 0 4
+ length 80
  exec-timeout 30 0
  logging synchronous
  history size 50
