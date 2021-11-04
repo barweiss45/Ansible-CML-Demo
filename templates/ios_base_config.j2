@@ -1,0 +1,42 @@
+hostname {{ inventory_hostname }}
+{# SERVICE SETTINGS #}
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec show-timezone
+service timestamps log datetime msec show-timezone
+service password-encryption
+service sequence-numbers
+{# LOGGING SETTINGS #}
+logging buffered 16000
+{# TIMEZONE SETTINGS #}
+clock timezone EST -5 0
+clock summer-time EDT date Nov 7 2021 2:00 Mar 11 2022 2:00
+{# DNS SETTINGS #}
+ip domain lookup source-interface GigabitEthernet0/0
+ip domain name ansible-cml.lab
+ip name-server vrf MGMT 208.67.220.220
+ip name-server vrf MGMT 172.17.81.1
+{# ARCHIVE SETTIGNS #}
+archive
+ log config
+  logging enable
+  logging size 50
+  notify syslog contenttype plaintext
+  hidekeys
+ path flash:
+{# NTP SERVER SETTINGS #}
+ntp source GigabitEthernet0/0
+ntp server vrf MGMT ip time.nist.gov
+{# LINE SETINGS #}
+line con 0
+ exec-timeout 30 0
+ logging synchronous
+ history size 50
+ transport preferred none
+ transport output none
+line vty 0 4
+ exec-timeout 30 0
+ logging synchronous
+ history size 50
+ transport preferred none
+ transport input ssh
