@@ -1,5 +1,7 @@
 ---
 # This file is varialbles for the 'routers' group in the inv.yml file. All options impact though devices in the group.
-ansible_network_os: ios
+# If we didn't have 2 different types of operating systems in this repository then we could uncomment the 'ansible_network_os' variable,
+# but since that is not the case we ahve now created two more files in the group_vars to support this. These refere to the groups in the inv.yml file.
+# ansible_network_os: ios
 ansible_user: cisco
 ansible_password: cisco
