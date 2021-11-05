@@ -1,6 +1,7 @@
 ---
+# This playbook will only attempt to run on devices in the 'ios' group. See the how the 'hosts:' key has the value labeled 'ios'.
 - name: "PLAY 1: Configure IOS interfaces using ios_base_config.j2 template"
-  hosts: routers
+  hosts: ios
   connection: network_cli
   tasks:
     - name: "TASK 1: Apply IOS base configurations to IOS Routers"
