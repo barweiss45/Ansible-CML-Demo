@@ -1,6 +1,11 @@
 # CML - Anisible Scripts
 ## Introduction
-Playbooks and scripts for my internal CML test bed in the lab.
+This repository originally started as a place for me to store my playbooks and scripts for my internal CML test bed during my studies of CML; however, I shortly realized the opportunity that this repository had in helping others with a limited experience with **Infrastructure as Code (IaC)**. It is my goal to build this repository as a practical "how to guide" that is not only a learning tool for Network Engineers to  how to set up their first IaC based network, but also a starting point for a practial implementation on their existing network. It is my hope that a Network Engineers can clone this repository in their lab and use the instructions that are in this README to learn about IaC and then using this repository as a springboard to start their own PoC. If you are looking for a way to show your boss the benefits of IaC and network automation than I hope you will find this repository useful.
+
+## Acknowledgements
+I used a number of resources to help me put together this repository. Many thanks and appreciation to the creators and organizaitons that put that information out there. Below are the links that I found invaulable and highly recommend that the learner take time to review them:
+* [Ansible Documentation - Best Practices](https://docs.ansible.com/ansible/2.7/user_guide/playbooks_best_practices.html)
+* [Nick Russo's Pluralsight Video Series "Automating Networks with Ansible the Right Way"](https://www.pluralsight.com/courses/automating-networks-ansible-right-way)
 
 ## Before starting this walkthrough, these are the skills you should have
 * a basic knowledge of navigating the Linux Bash Sheel (although you can run this lab on MacOS or Windows, it is easier to do much of this in an Linux environment).
