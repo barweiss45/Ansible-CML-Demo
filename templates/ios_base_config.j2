@@ -14,8 +14,9 @@ clock summer-time EDT date Nov 7 2021 2:00 Mar 11 2022 2:00
 {# DNS SETTINGS #}
 ip domain lookup source-interface GigabitEthernet0/0
 ip domain name ansible-cml.lab
-ip name-server vrf MGMT 208.67.220.220
-ip name-server vrf MGMT 172.17.81.1
+{% for nameserver in nameservers %}
+ip name-server vrf MGMT {{ nameserver.ip }}
+{% endfor %}
 {# ARCHIVE SETTIGNS #}
 archive
  log config

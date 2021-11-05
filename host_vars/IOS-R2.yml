@@ -13,3 +13,10 @@ interfaces:
     description: "*TO:Gi0/2 - IOS-R3*"
     ipv4addr: "10.0.2.2"
     ipv4mask: "255.255.255.0"
+    
+nameservers:
+  - ip: "208.67.220.220"
+  - ip: "208.67.222.222"
+nameservers:
+  - ip: "208.67.220.220"
+  - ip: "208.67.222.222"

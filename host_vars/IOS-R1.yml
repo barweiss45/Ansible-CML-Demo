@@ -8,3 +8,7 @@ interfaces:
     description: "*TO:Gi0/1 - IOS-R2*"
     ipv4addr: "10.0.1.1"
     ipv4mask: "255.255.255.0"
+
+nameservers:
+  - ip: "208.67.220.220"
+  - ip: "208.67.222.222"
