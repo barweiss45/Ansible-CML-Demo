@@ -3,19 +3,12 @@
 {% for iname, idata in interfaces.items() -%}
 interface {{ iname }}
   description {{ idata .description }}
-  dampening
   {% if idata.vrfname %}
-  vrf forwarding {{ idata.vrfname }}
+  vrf {{ idata.vrfname }}
   {% endif %}
-  {% if idata.ipv4addr and idata.ipv4mask %}
-  ip address {{ idata.ipv4addr }} {{ idata.ipv4mask }}
+  {% if idata.ipv4addr and idata.ipv4cidr %}
+  ipv4 address {{ idata.ipv4addr }}/{{ idata.ipv4cidr }}
   {% endif %}
-  no ip proxy-arp
-  no ip redirect
-  {% if idata.urpfon %}
-  ip verify unicast source reachable-via rx allow-default
-  {% endif %}
-  carrier-delay 0
   {% if idata.activate %}
   no shutdown
   {% else %}

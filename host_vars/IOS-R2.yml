@@ -24,12 +24,12 @@ interfaces:
     activate: activate
 
   gi0/3:
-    description: "AVAILABLE"
+    description: "TO:Gi0/0 - IOSXR-R1"
     vrfname:
-    ipv4addr: ""
-    ipv4mask: ""
+    ipv4addr: "10.10.2.2"
+    ipv4mask: "255.255.255.0"
     urpfon: false
-    activate: false
+    activate: true
 
   lo0:
     description: "*LOOPBACK-{{ inventory_hostname }}*"

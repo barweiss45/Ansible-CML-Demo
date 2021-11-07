@@ -1,1 +1,28 @@
 interfaces:
+  Mg0/0/CPU0/0:
+    description: "*MGMT*"
+    vrfname: "MGMT"
+    ipv4addr: "172.17.82.53"
+    ipv4cidr: "24"
+    activate: true
+
+  Gi0/0/0/0:
+    description: "TO:Gi0/3 - IOS-R2"
+    vrfname:
+    ipv4addr: "10.10.2.1"
+    ipv4cidr: "24"
+    activate: true
+
+  Gi0/0/0/1:
+    description: "AVAILABLE"
+    vrfname:
+    ipv4addr: ""
+    ipv4cidr: ""
+    activate: false
+
+  Gi0/0/0/2:
+    description: "AVAILABLE"
+    vrfname:
+    ipv4addr: ""
+    ipv4cidr: ""
+    activate: false
