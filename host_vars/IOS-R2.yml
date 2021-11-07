@@ -1,16 +1,19 @@
 interfaces:
-  - port: "gi0/0"
+  gi0/0:
     description: "*MGMT INTERFACE*"
+    vrfname: "MGMT"
     ipv4addr: "172.17.82.51"
     ipv4mask: "255.255.255.0"
 
-  - port: "gi0/1"
+  gi0/1:
     description: "*TO:Gi0/1 - IOS-R1*"
+    vrfname:
     ipv4addr: "10.0.1.2"
     ipv4mask: "255.255.255.0"
 
-  - port: "gi0/2"
+  gi0/2:
     description: "*TO:Gi0/2 - IOS-R3*"
+    vrfname:
     ipv4addr: "10.0.2.2"
     ipv4mask: "255.255.255.0"
     
