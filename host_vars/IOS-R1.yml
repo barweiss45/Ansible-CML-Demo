@@ -4,12 +4,40 @@ interfaces:
     vrfname: "MGMT"
     ipv4addr: "172.17.82.50"
     ipv4mask: "255.255.255.0"
+    urpfon: true
+    activate: true
 
   gi0/1:
     description: "*TO:Gi0/1 - IOS-R2*"
     vrfname:
     ipv4addr: "10.0.1.1"
     ipv4mask: "255.255.255.0"
+    urpfon: false
+    activate: true
+
+  gi0/2:
+    description: "AVAILABLE"
+    vrfname:
+    ipv4addr: ""
+    ipv4mask: ""
+    urpfon: false
+    activate: false
+
+  gi0/3:
+    description: "AVAILABLE"
+    vrfname:
+    ipv4addr: ""
+    ipv4mask: ""
+    urpfon: false
+    activate: false
+  
+  lo0:
+    description: "*LOOPBACK-{{ inventory_hostname }}*"
+    vrfname:
+    ipv4addr: "1.1.1.1"
+    ipv4mask: "255.255.255.255"
+    urpfon: false
+    activate: true
 
 nameservers:
   - ip: "208.67.220.220"

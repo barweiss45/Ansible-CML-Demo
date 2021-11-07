@@ -1,13 +1,24 @@
 {# This template is for configuring IOS Router Interfaces Only -#}
-{# iterrate through the host_var *.yaml file. Refer to host_vars/README.md to get information about understanding the nested interation here. -#}
+{# iterrate through the host_var *.yaml file. Refer to host_vars/README.md to get information. -#}
 {% for iname, idata in interfaces.items() -%}
 interface {{ iname }}
  description {{ idata .description }}
- {% if idata.vrfname %}
- vrf forwarding {{ idata.vrfname }}
- {% endif %}
- ip address {{ idata.ipv4addr }} {{ idata.ipv4mask }}
- no ip proxy-arp
- no ip redirect
- no shut
+  dampening
+  {% if idata.vrfname %}
+  vrf forwarding {{ idata.vrfname }}
+  {% endif %}
+  {% if idata.ipv4addr and idata.ipv4mask %}
+  ip address {{ idata.ipv4addr }} {{ idata.ipv4mask }}
+  {% endif %}
+  no ip proxy-arp
+  no ip redirect
+  {% if idata.urpfon %}
+  ip verify unicast source reachable-via rx allow-default
+  {% endif %}
+  carrier-delay 0
+  {% if idata.activate %}
+  no shutdown
+  {% else %}
+  shutdown
+  {% endif %}
 {% endfor %}
