@@ -1,28 +1,35 @@
 interfaces:
-  Mg0/0/CPU0/0:
+  MgmtEth0/0/CPU0/0:
     description: "*MGMT*"
     vrfname: "MGMT"
     ipv4addr: "172.17.82.57"
-    ipv4cidr: "24"
+    ipv4mask: "255.255.255.0"
     activate: true
 
-  Gi0/0/0/0:
+  GigabitEthernet0/0/0/0:
+    description: "*TO:Gi0/1 - IOS-R4*"
+    vrfname:
+    ipv4addr: "10.10.4.2"
+    ipv4mask: "255.255.255.0"
+    activate: true
+
+  GigabitEthernet0/0/0/1:
+    description: "*TO:Gi0/0/0/1 - IOSXR-R1*"
+    vrfname:
+    ipv4addr: "10.10.1.2"
+    ipv4mask: "255.255.255.0"
+    activate: true
+
+  GigabitEthernet0/0/0/2:
     description: "AVAILABLE"
     vrfname:
     ipv4addr: ""
-    ipv4cidr: ""
+    ipv4mask: ""
     activate: false
 
-  Gi0/0/0/1:
-    description: "AVAILABLE"
+  Loopback0:
+    description: "*LOOPBACK-{{ inventory_hostname }}*"
     vrfname:
-    ipv4addr: ""
-    ipv4cidr: ""
-    activate: false
-
-  Gi0/0/0/2:
-    description: "AVAILABLE"
-    vrfname:
-    ipv4addr: ""
-    ipv4cidr: ""
-    activate: false
+    ipv4addr: "10.10.10.2"
+    ipv4mask: "255.255.255.0"
+    activate: true

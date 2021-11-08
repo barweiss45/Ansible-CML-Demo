@@ -24,7 +24,7 @@ interfaces:
     activate: activate
 
   gi0/3:
-    description: "TO:Gi0/0 - IOSXR-R1"
+    description: "TO:Gi0/0/0/0 - IOSXR-R1"
     vrfname:
     ipv4addr: "10.10.2.2"
     ipv4mask: "255.255.255.0"

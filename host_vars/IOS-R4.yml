@@ -8,12 +8,12 @@ interfaces:
     activate: true
 
   gi0/1:
-    description: "AVAILABLE"
+    description: "*TO:Gi0/0/0/0 - IOSXR-R1*"
     vrfname:
-    ipv4addr: ""
-    ipv4mask: ""
+    ipv4addr: "10.10.4.4"
+    ipv4mask: "255.255.255.0"
     urpfon: false
-    activate: false
+    activate: true
 
   gi0/2:
     description: "*TO:Gi0/1 - IOS-R6*"
