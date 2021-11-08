@@ -1,0 +1,10 @@
+- name: "PLAY 1 - Configure OSPFv2 on IOSv Routers"
+  hosts: ios #THIS WILL REFER TO THE HOST/GROUP THAT THIS PLAY IS TARGETING
+  connection: network_cli # FOR NETWORK DEVICES THE CONNECTION WILL BE 'network_cli'
+  tasks:
+    - name: "TASK 1: Configure OSPFv2 inerface from templates/ios_igp_interface_config.j2"
+      cli_config:
+        src
+
+    - name: "TASK 2: DESCRIBE THE SECOND TASK"
+      # THIS IS WHERE THE MODULE AND ACTION IS DEFINED

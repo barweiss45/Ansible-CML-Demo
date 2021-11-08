@@ -6,7 +6,8 @@
   tasks:
     - name: "TASK 1: Apply XRv interface configurations to XRv Routers"
       cli_config:
-        config: "{{ lookup('template', '../templates/iosxr_interface_config.j2') }}"
+        # the lookup plugin is used. Lookup plugins are used to retrieve data from extnernal sources like files and templates
+        config: "{{ lookup('template', '../templates/iosxr_interface_config.j2') }}" 
         commit: true
         commit_comment: "Configured by Ansible"
       notify: config_changed # a conditional that notifies the handler below if the configuration has changed.

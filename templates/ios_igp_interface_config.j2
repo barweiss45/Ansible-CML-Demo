@@ -1,0 +1,8 @@
+{% for iname, idata in interfaces.items() -%}
+{% if idata.ospf_area and ospf_process_id %}
+interface {{ iname }}
+ ip ospf network {{ ospf_network_type }}
+ ip ospf {{ ospf_process_id }} area {{ ospf_area }}
+ exit
+{% endif %}
+{% endfor %}
