@@ -1,0 +1,13 @@
+- name: "PLAY 1: Agnostic Network OS Running Configuration Backup Play Book"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Execute the 'show run' command on the Network Device"
+      cli_command:
+        command: "{{backup}}" # The variable is set in the group_vars of each vendor
+      register: backup
+    
+    - name: "TASK 2: Send Output to the  ../ouputs/ folder"
+      copy:
+        content: "{{ backup.stdout }}"
+        dest: "outputs/{{ inventory_hostname }}.txt"

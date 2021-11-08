@@ -1,2 +1,7 @@
 ---
 ansible_network_os: "iosxr"
+
+# For the playbook agnostic-configuration-backup.yml, you will want to set the variable backup as the 'show run' command for the specific OS
+# Although most Cisco network OS's use 'show run', other vendors may use commands like 'Show config' or other..
+
+backup: "show running-config"
