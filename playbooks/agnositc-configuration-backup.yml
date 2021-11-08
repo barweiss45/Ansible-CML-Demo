@@ -2,9 +2,9 @@
   hosts: routers
   connection: network_cli
   tasks:
-    - name: "TASK 1: Execute the 'show run' command on the Network Device"
+    - name: "TASK 1: Execute the appropiat display configuration command on the Network Device"
       cli_command:
-        command: "{{backup}}" # The variable is set in the group_vars of each vendor
+        command: "{{backup}}" # The variable is set in the group_vars of each vendor. See 'backup' variable in the group_vars/
       register: backup
     
     - name: "TASK 2: Send Output to the  ../ouputs/ folder"
