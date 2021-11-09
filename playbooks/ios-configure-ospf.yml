@@ -7,7 +7,7 @@
         config: "{{ ospf }}" # this variable is taken from the 'host_vars'/ device file 'ospf:' setion
         state: merged
       register: cli_ospf_result
-    
+
     - name: "TASK 2: Display output of Task 1"
       debug:
         msg: "{{ cli_ospf_result }}"
