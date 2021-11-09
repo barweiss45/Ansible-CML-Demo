@@ -1,43 +1,72 @@
 interfaces:
-  gi0/0:
+  GigabitEthernet0/0:
     description: "*MGMT INTERFACE*"
     vrfname: "MGMT"
     ipv4addr: "172.17.82.55"
     ipv4mask: "255.255.255.0"
     urpfon: true
     activate: true
+    ospf_process_id:
+    ospf_area:
+    ospf_make_passive: true
+    ospf_network_type:
 
-  gi0/1:
+  GigabitEthernet0/1:
+    description: "AVAILABLE"
+    vrfname:
+    ipv4addr:
+    ipv4mask:
+    urpfon: false
+    activate: false
+    ospf_process_id:
+    ospf_area:
+    ospf_make_passive: true
+    ospf_network_type:
+
+  GigabitEthernet0/2:
     description: "AVAILABLE"
     vrfname:
     ipv4addr: ""
     ipv4mask: ""
     urpfon: false
     activate: false
+    ospf_process_id:
+    ospf_area:
+    ospf_make_passive: true
+    ospf_network_type:
 
-  gi0/2:
-    description: "AVAILABLE"
-    vrfname:
-    ipv4addr: ""
-    ipv4mask: ""
-    urpfon: false
-    activate: false
-
-  gi0/3:
+  GigabitEthernet0/3:
     description: "*TO:Gi0/3 - IOS-R4*"
     vrfname:
     ipv4addr: "10.0.4.5"
     ipv4mask: "255.255.255.0"
     urpfon: false
     activate: true
+    ospf_process_id: "1"
+    ospf_area: "0"
+    ospf_make_passive: false
+    ospf_network_type: "point-to-point"
 
-  lo0:
+  Loopback0:
     description: "*LOOPBACK-{{ inventory_hostname }}*"
     vrfname:
     ipv4addr: "5.5.5.5"
     ipv4mask: "255.255.255.255"
     urpfon: false
     activate: true
+    ospf_process_id: "1"
+    ospf_area: "0"
+    ospf_make_passive: true
+    ospf_network_type:
+
+ospf:
+  processes:
+  - log_adjacency_changes:
+      detail: true
+    passive_interfaces:
+      default: true
+    process_id: "1" # hardcoded this because I couldn't find a better way of doing it yet.
+    router_id: "{{ interfaces['Loopback0'].ipv4addr }}"
 
 nameservers:
   - ip: "208.67.220.220"

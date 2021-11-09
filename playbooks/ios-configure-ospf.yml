@@ -2,9 +2,25 @@
   hosts: ios #THIS WILL REFER TO THE HOST/GROUP THAT THIS PLAY IS TARGETING
   connection: network_cli # FOR NETWORK DEVICES THE CONNECTION WILL BE 'network_cli'
   tasks:
-    - name: "TASK 1: Configure OSPFv2 inerface from templates/ios_igp_interface_config.j2"
-      cli_config:
-        src
+    - name: "TASK 1: Configure OSPFv2 process for IOSv router"
+      ios_ospfv2:
+        config: "{{ ospf }}" # this variable is taken from the 'host_vars'/ device file 'ospf:' setion
+        state: merged
+      register: cli_ospf_result
+    
+    - name: "TASK 2: Display output of Task 1"
+      debug:
+        msg: "{{ cli_ospf_result }}"
 
-    - name: "TASK 2: DESCRIBE THE SECOND TASK"
-      # THIS IS WHERE THE MODULE AND ACTION IS DEFINED
+    - name: "TASK 3: Configure OSPFv2 inerface on IOSv router from templates/ios_igp_interface_config.j2"
+      cli_config:
+        # Using the lookup plugin to retrieve from ../templates/ios-configure-ospf.yml
+        config: "{{ lookup('template', '../templates/ios_igp_interface_config.j2') }}"
+      notify: config_changed # a conditional that notifies the handler below if the configuration has changed.
+      register: cli_result
+
+  handlers: 
+    - name: "TASK 4: Display output of Task 3 if configure has changed"
+      listen: config_changed # If the notify sends then config_changed then run debug.msg below
+      debug:
+        msg: "{{ cli_result }}"

@@ -6,10 +6,10 @@ interfaces:
     ipv4mask: "255.255.255.0"
     urpfon: true
     activate: true
-    ospf_process_id: ''
-    ospf_area: ''
+    ospf_process_id:
+    ospf_area:
     ospf_make_passive: true
-    ospf_network_type: ''
+    ospf_network_type:
 
   GigabitEthernet0/1:
     description: "*TO:Gi0/1 - IOS-R1*"
@@ -18,10 +18,10 @@ interfaces:
     ipv4mask: "255.255.255.0"
     urpfon: false
     activate: activate
-    ospf_process_id: ''
-    ospf_area: ''
-    ospf_make_passive: true
-    ospf_network_type: ''
+    ospf_process_id: "1"
+    ospf_area: "0"
+    ospf_make_passive: false
+    ospf_network_type: "point-to-point"
 
 
   GigabitEthernet0/2:
@@ -30,11 +30,11 @@ interfaces:
     ipv4addr: "10.0.2.2"
     ipv4mask: "255.255.255.0"
     urpfon: false
-    activate: activate
-    ospf_process_id: ''
-    ospf_area: ''
-    ospf_make_passive: true
-    ospf_network_type: ''
+    activate: true
+    ospf_process_id: "1"
+    ospf_area: "0"
+    ospf_make_passive: false # leave true if you want the interface passive / if you want an ospf peer on this link set false.
+    ospf_network_type: 'point-to-point'
 
   GigabitEthernet0/3:
     description: "TO:Gi0/0/0/0 - IOSXR-R1"
@@ -43,10 +43,10 @@ interfaces:
     ipv4mask: "255.255.255.0"
     urpfon: false
     activate: true
-    ospf_process_id: ''
-    ospf_area: ''
-    ospf_make_passive: true
-    ospf_network_type: ''
+    ospf_process_id: "1"
+    ospf_area: "0"
+    ospf_make_passive: false
+    ospf_network_type: "point-to-point"
 
   Loopback0:
     description: "*LOOPBACK-{{ inventory_hostname }}*"
@@ -55,16 +55,20 @@ interfaces:
     ipv4mask: "255.255.255.255"
     urpfon: false
     activate: true
-    ospf_process_id: ''
-    ospf_area: ''
+    ospf_process_id: "1"
+    ospf_area: "0"
     ospf_make_passive: true
-    ospf_network_type: ''
+    ospf_network_type:
 
 ospf:
-  activate: true
   processes:
-    - ospf_process_id: 1
-      router_id: {{ Loopback0.ipv4addr }}
+  - log_adjacency_changes:
+      detail: true
+    passive_interfaces:
+      default: true
+    process_id: "1" # hardcoded this because I couldn't find a better way of doing it yet.
+    router_id: "{{ interfaces['Loopback0'].ipv4addr }}"
+
 
 nameservers:
   - ip: "208.67.220.220"

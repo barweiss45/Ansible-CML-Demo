@@ -1,0 +1,14 @@
+---
+- name: "PLAY 1: Gather and convert configured OSPFv2 resource on IOS-R2 to structured data."
+  hosts: IOS-R2
+  connection: network_cli
+  gather_facts: false
+  tasks:
+      - name: "TASK 1: Gather current OSPFv2 configuration of IOS-R2 using the ios_ospfv2 module"
+        ios_ospfv2:
+          state: gathered
+        register: ospfv2_facts
+      
+      - name: "TASK 2: Print out 'ospfv2_facts' to cli"
+        debug:       
+          msg: "{{ ospfv2_facts }}"
