@@ -34,7 +34,7 @@ interfaces:
     ospf_process_id: "1"
     ospf_area: "0"
     ospf_make_passive: false # leave true if you want the interface passive / if you want an ospf peer on this link set false.
-    ospf_network_type: 'point-to-point'
+    ospf_network_type: "point-to-point"
 
   GigabitEthernet0/3:
     description: "TO:Gi0/0/0/0 - IOSXR-R1"

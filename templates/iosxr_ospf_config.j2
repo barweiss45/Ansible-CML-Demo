@@ -1,0 +1,17 @@
+{# This template is for configuring IOS Router Interfaces Only -#}
+{# iterrate through the host_var *.yaml file. Refer to host_vars/README.md to get information. -#}
+{% for iname, idata in interfaces.items() -%}
+interface {{ iname }}
+ description {{ idata .description }}
+ {% if idata.vrfname %}
+ vrf {{ idata.vrfname }}
+ {% endif %}
+ {% if idata.ipv4addr and idata.ipv4mask %}
+ ipv4 address {{ idata.ipv4addr }} {{ idata.ipv4mask }}
+ {% endif %}
+ {% if idata.activate %}
+ no shutdown
+ {% else %}
+ shutdown
+ {% endif %}
+{% endfor %}

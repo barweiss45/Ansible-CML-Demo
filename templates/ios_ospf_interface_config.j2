@@ -1,9 +1,9 @@
-{% for iname, idata in interfaces.items() -%}
+{% for iname, idata in interfaces.items() %}
 {% if idata.ospf_process_id and idata.ospf_area %}
 interface {{ iname }}
- {% if idata.ospf_network_type -%}
+ {% if idata.ospf_network_type %}
  ip ospf network {{ idata.ospf_network_type }}
- {% endif -%}
+ {% endif %}
  ip ospf {{ idata.ospf_process_id }} area {{ idata.ospf_area }}
  exit
  {% if not idata.ospf_make_passive  %}
