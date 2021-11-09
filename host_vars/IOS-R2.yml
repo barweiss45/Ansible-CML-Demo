@@ -33,7 +33,7 @@ interfaces:
     activate: true
     ospf_process_id: "1"
     ospf_area: "0"
-    ospf_make_passive: false # leave true if you want the interface passive / if you want an ospf peer on this link set false.
+    ospf_make_passive: false  # leave true if you want the interface passive / if you want an ospf peer on this link set false.
     ospf_network_type: "point-to-point"
 
   GigabitEthernet0/3:
@@ -62,13 +62,12 @@ interfaces:
 
 ospf:
   processes:
-  - log_adjacency_changes:
-      detail: true
-    passive_interfaces:
-      default: true
-    process_id: "1" # hardcoded this because I couldn't find a better way of doing it yet.
-    router_id: "{{ interfaces['Loopback0'].ipv4addr }}"
-
+    - log_adjacency_changes:
+        detail: true
+      passive_interfaces:
+        default: true
+      process_id: "1"  # hardcoded this because I couldn't find a better way of doing it yet.
+      router_id: "{{ interfaces['Loopback0'].ipv4addr }}"
 
 nameservers:
   - ip: "208.67.220.220"
