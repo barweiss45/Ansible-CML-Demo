@@ -1,9 +1,9 @@
-- name: "PLAY 1 - Configure OSPFv2 on IOSv Routers"
-  hosts: ios  # THIS WILL REFER TO THE HOST/GROUP THAT THIS PLAY IS TARGETING
+- name: "PLAY 1 - Configure OSPFv2 on XRv routers"
+  hosts: ios_xr  # THIS WILL REFER TO THE HOST/GROUP THAT THIS PLAY IS TARGETING
   connection: network_cli  # FOR NETWORK DEVICES THE CONNECTION WILL BE 'network_cli'
   tasks:
-    - name: "TASK 1: Configure OSPFv2 process for IOSv router"
-      ios_ospfv2:
+    - name: "TASK 1: Configure OSPFv2 process for XRv router"
+      iosxr_ospfv2:
         config: "{{ ospf }}"  # this variable is taken from the 'host_vars'/ device file 'ospf:' setion
         state: merged
       register: cli_ospf_result
@@ -12,10 +12,12 @@
       debug:
         msg: "{{ cli_ospf_result }}"
 
-    - name: "TASK 3: Configure OSPFv2 inerface on IOSv router from templates/ios_igp_interface_config.j2"
+    - name: "TASK 3: Configure OSPFv2 inerface on XRv using the iosxr_ospf_interfaces module from templates/iosxr_ospf_config.j2"
       cli_config:
-        # Using the lookup plugin to retrieve from ../templates/ios_ospf_interface_config.j2
-        config: "{{ lookup('template', '../templates/ios_ospf_interface_config.j2') }}"
+        # Using the lookup plugin to retrieve from ../templates/iosxr_ospf__config.j2
+        config: "{{ lookup('template', '../templates/iosxr_ospf_config.j2') }}"
+        commit: true
+        commit_comment: "Configured by Ansible"
       notify: config_changed  # a conditional that notifies the handler below if the configuration has changed.
       register: cli_result
 

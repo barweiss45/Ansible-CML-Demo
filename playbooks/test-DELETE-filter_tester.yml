@@ -1,0 +1,16 @@
+---
+# A throw away playbook used for local testing
+- name: "PLAY 1: This is a test playbook for local testing"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: "TASK 1: Create the template"
+      template:
+        src: ../templates/iosxr_ospf_config.j2"
+        dest: iosxr_ospf_interface.yml 
+    - name: "TASK 1: Test something"
+      set_fact:
+        interface: "GigabitEthernet0"
+    - name: "TASK 2: Show something"
+      debug:
+        msg: "{{ interface|find_interface_type }}"

@@ -1,5 +1,6 @@
 # ignore output folder and contents
-outputs/
+outputs/*
+.vscode/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

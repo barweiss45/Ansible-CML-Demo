@@ -6,18 +6,18 @@
   tasks:
       - name: "TASK 1: Gather current OSPFv2 configuration of IOSXR-R1 using the iosxr_ospfv2 module"
         iosxr_ospfv2:
-          state: gathered
+            state: gathered
         register: ospfv2_facts
 
       - name: "TASK 2: Print out 'ospfv2_facts' to cli"
-        debug:       
-          msg: "{{ ospfv2_facts }}"
+        debug:
+            msg: "{{ ospfv2_facts }}"
 
       - name: "TASK 3: Gather current OSPFv2 interface configuration of IOSXR-R1 using the iosxr_ospf_interfaces module"
         cisco.iosxr.iosxr_ospf_interfaces:
-          state: gathered
+            state: gathered
         register: ospf_interfaces_facts
 
       - name: "TASK 4: Print out 'ospf_interface_facts' to cli"
-        debug:       
-          msg: "{{ ospf_interfaces_facts }}"
+        debug:
+            msg: "{{ ospf_interfaces_facts }}"

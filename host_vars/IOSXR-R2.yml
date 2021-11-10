@@ -5,6 +5,10 @@ interfaces:
     ipv4addr: "172.17.82.57"
     ipv4mask: "255.255.255.0"
     activate: true
+    ospf_process_id:
+    ospf_area:
+    ospf_make_passive: true
+    ospf_network_type:
 
   GigabitEthernet0/0/0/0:
     description: "*TO:Gi0/1 - IOS-R4*"
@@ -12,6 +16,10 @@ interfaces:
     ipv4addr: "10.10.4.2"
     ipv4mask: "255.255.255.0"
     activate: true
+    ospf_process_id: "DEFAULT"
+    ospf_area: "0"
+    ospf_make_passive: false
+    ospf_network_type: "point-to-point"
 
   GigabitEthernet0/0/0/1:
     description: "*TO:Gi0/0/0/1 - IOSXR-R1*"
@@ -19,6 +27,10 @@ interfaces:
     ipv4addr: "10.10.1.2"
     ipv4mask: "255.255.255.0"
     activate: true
+    ospf_process_id: "DEFAULT"
+    ospf_area: "0"
+    ospf_make_passive: false
+    ospf_network_type: "point-to-point"
 
   GigabitEthernet0/0/0/2:
     description: "AVAILABLE"
@@ -26,6 +38,10 @@ interfaces:
     ipv4addr: ""
     ipv4mask: ""
     activate: false
+    ospf_process_id:
+    ospf_area:
+    ospf_make_passive: true
+    ospf_network_type:
 
   Loopback0:
     description: "*LOOPBACK-{{ inventory_hostname }}*"
@@ -33,3 +49,12 @@ interfaces:
     ipv4addr: "10.10.10.2"
     ipv4mask: "255.255.255.0"
     activate: true
+    ospf_process_id: "DEFAULT"
+    ospf_area: "0"
+    ospf_make_passive: true
+    ospf_network_type:
+
+ospf:
+  processes:
+    - process_id: "DEFAULT"
+      router_id: "{{ interfaces['Loopback0'].ipv4addr }}"
